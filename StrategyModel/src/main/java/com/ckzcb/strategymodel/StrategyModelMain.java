@@ -1,5 +1,8 @@
 package com.ckzcb.strategymodel;
 
+
+import com.ckzcb.strategymodel.model.*;
+
 /**
  * @ClassName StrategyModelMain
  * @Description
@@ -9,6 +12,22 @@ package com.ckzcb.strategymodel;
  */
 public class StrategyModelMain {
     public static void main(String[] args) {
-        
+        // 创建加法策略
+        OperationStrategy addition = new AdditionStrategy();
+        Calculator calculator = new Calculator(addition);
+        int result = calculator.executeStrategy(5, 3);
+        System.out.println("5 + 3 = " + result);
+
+        // 切换到减法策略
+        OperationStrategy subtraction = new SubtractionStrategy();
+        calculator.setStrategy(subtraction);
+        result = calculator.executeStrategy(5, 3);
+        System.out.println("5 - 3 = " + result);
+
+        // 切换到乘法策略
+        OperationStrategy multiplication = new MultiplicationStrategy();
+        calculator.setStrategy(multiplication);
+        result = calculator.executeStrategy(5, 3);
+        System.out.println("5 * 3 = " + result);
     }
 }
